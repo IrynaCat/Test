@@ -1,4 +1,5 @@
 #!/bin/bash
+apt-get update
 apt-get install -y\
     apt-transport-https \
     ca-certificates \
@@ -6,7 +7,7 @@ apt-get install -y\
     gnupg \
     lsb-release
 
-sleep 5
+
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
@@ -15,8 +16,8 @@ echo \ "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg
 
 apt-get update
 apt-get purge docker-ce docker-ce-cli containerd.io
+apt-get install -y docker.io
 apt-get install -y docker-ce docker-ce-cli containerd.io
-
 
 docker pull chentex/go-rest-api:latest
 
